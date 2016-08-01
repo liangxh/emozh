@@ -39,7 +39,7 @@ def main():
 		i += 1
 		pbar.update(i)
 
-	pbar.finish(i)
+	pbar.finish()
 
 	cPickle.dump(emo_mids, open('../output/emo_mids.pkl', 'w'))
 
