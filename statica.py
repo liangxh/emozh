@@ -22,20 +22,21 @@ def main():
 	
 	emo_mids = {}
 
-	pbar = progbar.start(TOTAL)
+	limit = 25000000
+	pbar = progbar.start(limit)
 	i = 0
 
-	cur.execute("select mid, text from microblogs limit 1")
+	cur.execute("SELECT mid, text FROM microblogs WHERE comments_count > 0 AND comments_count < 100 LIMIT %d"%(limit))
 	for mid, text in cur:
 		text, emos = blogger.extract(text)
 		
-		if len(emos) > 0:
+		if len(emos) > 0 and len(emos) < 6:
 			samples = blogger.prepare_sample(text, emos)
 			for e, t in samples:
 				if emo_mids.has_key(e):
-					emo_mids[e] += 1
+					emo_mids[e].append(mid)
 				else:
-					emo_mids[e] = 1
+					emo_mids[e] = [mid, ]
 
 		i += 1
 		pbar.update(i)
