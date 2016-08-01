@@ -8,6 +8,7 @@ Created: 2016.08.01
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
+import cPickle
 
 import db
 import blogger
