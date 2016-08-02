@@ -25,7 +25,7 @@ def main():
 
 	cur.execute("SELECT text FROM microblogs WHERE comments_count > 0 AND comments_count < 100 LIMIT %d"%(limit))
 
-	fobjs = dict([(emo, open('../data/%s.txt'%(emo), 'w')) for emo in emos])
+	fobjs = dict([(emo, open('../corpus/%s.txt'%(emo), 'w')) for emo in emos])
 
 	for res in cur:
 		blog = res[0]
