@@ -23,9 +23,9 @@ def main():
 	pbar = progbar.start(limit)
 	i = 0
 
-	cur.execute("SELECT text FROM microblogs WHERE comments_count > 0 AND comments)count < 100 LIMIT %d"%(limit))
+	cur.execute("SELECT text FROM microblogs WHERE comments_count > 0 AND comments_count < 100 LIMIT %d"%(limit))
 
-	fobjs = dict([(emo, open('../data/%s.txt', 'w'%(emo))) for emo in emos ])
+	fobjs = dict([(emo, open('../data/%s.txt'%(emo), 'w')) for emo in emos])
 
 	for res in cur:
 		blog = res[0]
@@ -44,7 +44,7 @@ def main():
 		pbar.update(i)
 	pbar.finish()
 
-	for fobj in fobjs.items():
+	for fobj in fobjs.values():
 		fobj.close()
 
 if __name__ == '__main__':
