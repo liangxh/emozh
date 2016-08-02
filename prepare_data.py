@@ -17,7 +17,7 @@ def main():
 	con = db.connect()
 	cur = con.cursor()
 
-	emos = open('../output/emo_top100.txt', 'r').read().decode('utf8').split('\n')
+	emos = open('../data/emo_top100.txt', 'r').read().decode('utf8').split('\n')
 
 	limit = int(sys.argv[1])
 	pbar = progbar.start(limit)

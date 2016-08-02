@@ -12,6 +12,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 from emotool import emotica
+import zhprocessor
 
 ################################### CONST ########################################
 pattern_kr = re.compile(u'[\u1100-\u11ff\u2e80-\u33ff\uac00-\ud7af\u3130–\u318f\u3200–\u32ff\ua960–\ua97f\uac00-\ud7a3\ud7b0–\ud7ff\uff00–\uffef]+')
@@ -80,6 +81,7 @@ def extract(blog):
 	text = extract_main(blog)
 	text = remove_korean(text)
 	text = remove_space(text)
+	text = zhprocessor.simplify(text)
 
 	# extract and check emoticons
 	emos = emotica.findall(text)
