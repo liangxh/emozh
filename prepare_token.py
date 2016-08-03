@@ -5,6 +5,7 @@ Author: Xihao Liang
 Created: 2016.08.02
 '''
 
+import os
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -20,11 +21,10 @@ def wc_l(fname):
 def main():
 	dir_root = '../'
 	
-	dir_data = dir_root + 'data/'
 	dir_corpus = dir_root + 'corpus/'
 	dir_token = dir_root + 'token/'
 
-	fname_emo = dir_data + 'emo.txt'
+	fname_emo = dir_corpus + 'emo.txt'
 
 	emos = open(fname_emo, 'r').read().decode('utf8').split('\n')[:-1]
 
