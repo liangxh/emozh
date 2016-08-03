@@ -93,7 +93,9 @@ def prepare_sample(text, emos):
 	for emo in emos:
 		d = text.find(emo)
 		if d > 0:
-			samples.append((emo, text[:d]))
+			t = text[:d]
+			if contain_zh(t):
+				samples.append((emo, text[:d]))
 	
 		emo = '\[' + emo[1:-1] + '\]'
 		text = re.sub(r'(%s\s*)+'%(emo), '', text, 1)
