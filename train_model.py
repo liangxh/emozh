@@ -63,8 +63,7 @@ def get_minibatches_idx(n, minibatch_size, shuffle=False):
 import dataloader
 from wordembedder import WordEmbedder
 
-import os
-os.path.append('~/Documents/sentitree/')
+sys.path.append('../../sentitree/')
 import nnlib
 
 class Classifier:
@@ -409,8 +408,9 @@ def main():
 	fname_model = dir_exp + 'model/%s'%(opts.prefix)
 	fname_test = dir_exp + 'test/%s_test.pkl'%(opts.prefix)
 	fname_prec = dir_exp + 'test/%s_prec.pkl'%(opts.prefix)
-	
-	dataset = dataloader.load(fname_dataset)
+	dir_tokid = dir_exp + 'tokid/%s/'%(opts.key_embed)
+
+	dataset = dataloader.load(fname_dataset, dir_tokid)
 	wembedder = WordEmbedder.load(fname_embed)
 
 	if not opts.resume:
