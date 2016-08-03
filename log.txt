@@ -1,0 +1,16 @@
+
+python prepare_data.py
+(mysql > corpus_raw/)
+
+corpus_raw/ > ./filter.sh (過濾帶\[的樣本，它們可能是未被識別的表情符)
+corpus_raw/ > ./static.sh (统计得出emo_count.txt 和 emo.txt)
+
+python data_datazh.py
+(corpus_raw/ > corpus/)
+
+corpus/ > ./static.sh (统计得出emo_count.txt 和 emo.txt)
+
+# prepare_data原本不支持中文字符過濾（已添加），故添加prepare_datazh重要過濾和去重
+# 若有需要重要運行，建議修改prepare_datazh去除過濾的部分　
+
+python prepare_token.py
