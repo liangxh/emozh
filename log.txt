@@ -14,3 +14,12 @@ corpus/ > ./static.sh (统计得出emo_count.txt 和 emo.txt)
 # 若有需要重要運行，建議修改prepare_datazh去除過濾的部分　
 
 python prepare_token.py
+
+glove/ > ./demo.sh
+glove/ > mv gloves.txt 7T300d
+
+python prepare_tokid.py 7T300d
+
+python prepare_dataset.py 7T300d 50 20000
+(> dataset/7T300d50y20000)
+
