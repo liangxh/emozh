@@ -10,13 +10,11 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 import cPickle
-import nltk
 from optparse import OptionParser
 
-from utils import emojicoder
+import zhtokenizer
 from wordindexer import WordIndexer
 from classifier import Classifier
-
 
 class EmojiRecommender():
 	def __init__(self, fname_model, fname_embed, fname_dataset):
@@ -29,7 +27,7 @@ class EmojiRecommender():
 
 		print >> sys.stderr, 'EmojiRecommender: [info] loading emojis...'
 		ecode_split = cPickle.load(open(fname_dataset, 'r'))
-		self.emojis = [emojicoder.decode(ecode) for ecode, split in ecode_split]
+		self.emojis = [emo for emo, split in ecode_split]
 
 		self.ydim = len(self.emojis)
 
@@ -37,7 +35,7 @@ class EmojiRecommender():
 
 	def preprocess(self, text):
 		text = text.decode('utf8')
-		seq = [t.lower() for t in nltk.word_tokenize(text)]
+		seq = zhtokenizer.tokenize(text)
 		idxs = self.windexer.seq2idx(seq)
 
 		return idxs
@@ -68,21 +66,20 @@ class EmojiRecommender():
 		return res
 
 def main():
-	optparser = OptionParser()
+		optparser = OptionParser()
 
-	optparser.add_option('-x', '--exp_name', action='store', dest='exp_name')
-	optparser.add_option('-e', '--embed', action='store', dest='key_embed')
+	optparser.add_option('-p', '--prefix', action='store', dest='prefix')
 	optparser.add_option('-s', '--dataset', action='store', dest='key_dataset')
-	optparser.add_option('-p', '--prefix', action='store', dest='prefix')	
-
+	optparser.add_option('-e', '--embed', action='store', dest='key_embed')
+	
 	opts, args = optparser.parse_args()
 
 	prefix = opts.prefix
-	dir_exp = '/data/lxh/exp/%s/'%(opts.exp_name)
 
+	dir_exp = '../'
 	fname_dataset = dir_exp + 'dataset/%s.pkl'%(opts.key_dataset)
-	fname_embed = dir_exp + 'wemb/' + '%s.txt'%(opts.key_embed)
-	fname_model = dir_exp + 'model/' + '%s'%(prefix)
+	fname_embed = dir_exp + 'wemb/%s.txt'%(opts.key_embed)
+	fname_model = dir_exp + 'model/%s'%(opts.prefix)
 
 	recommender = EmojiRecommender(fname_model, fname_embed, fname_dataset)
 	
