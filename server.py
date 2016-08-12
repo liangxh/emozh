@@ -31,7 +31,7 @@ def load_emojiurl():
 			params = line[:-1].split(' ')
 			k = params[0].decode('utf8')
 			v = params[1]
-			emoji_url[k] = y
+			emoji_url[k] = v
 
 	return emoji_url
 
