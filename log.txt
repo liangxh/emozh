@@ -23,3 +23,5 @@ python prepare_tokid.py 7T300d
 python prepare_dataset.py 7T300d 50 20000
 (> dataset/7T300d50y20000)
 
+sudo python train_model.py -m blstm -e 7T300d -s 7T300d50y20000 -p blstm_7T300d50y20000
+sudo python train_model.py -m lstm2l -e 7T300d -s 7T300d50y20000 -p lstm2l_7T300d50y20000
