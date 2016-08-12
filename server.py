@@ -26,7 +26,7 @@ recommender = None
 
 def load_emojiurl():
 	emoji_url = {}
-	with open('../../data/emoji_urls.txt', 'r') as fobj:
+	with open('../data/emoji_urls.txt', 'r') as fobj:
 		for line in fobj:
 			params = line[:-1].split(' ')
 			k = params[0].decode('utf8')
