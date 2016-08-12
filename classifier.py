@@ -107,15 +107,11 @@ sys.path.append('../../sentitree/')
 import nnlib
 
 def main():
-	import nltk
-
-
 	optparser = OptionParser()
 
 	optparser.add_option('-p', '--prefix', action='store', dest='prefix')
 	optparser.add_option('-s', '--dataset', action='store', dest='key_dataset')
 	optparser.add_option('-e', '--embed', action='store', dest='key_embed')
-	optparser.add_option('-m', '--model', action='store', dest='model_name')
 	
 	opts, args = optparser.parse_args()
 
