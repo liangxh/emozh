@@ -113,19 +113,13 @@ def main():
 	optparser = OptionParser()
 
 	optparser.add_option('-p', '--prefix', action='store', dest='prefix')
-	optparser.add_option('-i', '--input', action='store', dest='key_input')
+	optparser.add_option('-s', '--dataset', action='store', dest='key_dataset')
 	optparser.add_option('-e', '--embed', action='store', dest='key_embed')
 	optparser.add_option('-m', '--model', action='store', dest='model_name')
 	
 	opts, args = optparser.parse_args()
 
 	prefix = opts.prefix
-
-	dir_exp = '../'
-	fname_input = 'data/dataset/' + '%s.pkl'%(opts.key_input)
-	fname_embed = 'data/wemb/' + '%s.txt'%(opts.key_embed)
-	fname_model = 'data/model/' + '%s'%(prefix)
-
 
 	dir_exp = '../'
 	fname_dataset = dir_exp + 'dataset/%s.pkl'%(opts.key_dataset)
