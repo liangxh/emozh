@@ -35,7 +35,7 @@ def load_emojiurl():
 
 	return emoji_url
 
-emoji_url = load_emojiurl
+emoji_url = load_emojiurl()
 
 import re
 pattern_en = re.compile('[a-zA-Z]+')
