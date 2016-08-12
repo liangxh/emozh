@@ -92,19 +92,18 @@ def main():
 	optparser.add_option('-i', '--host', action='store', type='str', dest='host', default=default_host)
 	optparser.add_option('-t', '--port', action='store', type='int', dest='port', default=default_port)
 
-	optparser.add_option('-x', '--exp_name', action='store', dest='exp_name')
 	optparser.add_option('-p', '--prefix', action='store', dest='prefix')
-	optparser.add_option('-e', '--embed', action='store', dest='key_embed')
 	optparser.add_option('-s', '--dataset', action='store', dest='key_dataset')
+	optparser.add_option('-e', '--embed', action='store', dest='key_embed')
 	
 	opts, args = optparser.parse_args()
 
 	prefix = opts.prefix
-	dir_exp = '/data/lxh/exp/%s/'%(opts.exp_name)
 
+	dir_exp = '../'
 	fname_dataset = dir_exp + 'dataset/%s.pkl'%(opts.key_dataset)
-	fname_embed = dir_exp + 'wemb/' + '%s.txt'%(opts.key_embed)
-	fname_model = dir_exp + 'model/' + '%s'%(prefix)
+	fname_embed = dir_exp + 'wemb/%s.txt'%(opts.key_embed)
+	fname_model = dir_exp + 'model/%s'%(opts.prefix)
 
 	global recommender
 	recommender = EmojiRecommender(fname_model, fname_embed, fname_dataset)
