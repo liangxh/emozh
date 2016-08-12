@@ -66,7 +66,7 @@ class EmojiRecommender():
 		return res
 
 def main():
-		optparser = OptionParser()
+	optparser = OptionParser()
 
 	optparser.add_option('-p', '--prefix', action='store', dest='prefix')
 	optparser.add_option('-s', '--dataset', action='store', dest='key_dataset')
