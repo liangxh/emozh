@@ -59,9 +59,9 @@ app = Flask('NoticeBoard', static_url_path = '')
 
 @app.route('/static/<dtype>/<fname>', methods = ['GET'])
 def get_static(dtype, fname):
-	dname = {'html':'html/',
-		'js':'js/',
-		'img':'img/',
+	dname = {'html':'demo/html/',
+		'js':'demo/js/',
+		'img':'demo/img/',
 		}[dtype]
 
 	if os.path.exists(os.path.join(dname, fname)):
