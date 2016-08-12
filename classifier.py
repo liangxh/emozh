@@ -18,6 +18,9 @@ import numpy as np
 import theano
 floatX = theano.config.floatX
 
+sys.path.append('../../sentitree/')
+import nnlib
+
 def update_tparams(tparams, params):
 	'''
 	set values for tparams using params
@@ -102,9 +105,6 @@ class Classifier:
 
 import zhtokenizer
 from wordindexer import WordIndexer
-
-sys.path.append('../../sentitree/')
-import nnlib
 
 def main():
 	optparser = OptionParser()
