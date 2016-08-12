@@ -19,7 +19,7 @@
 					emolist.html('');
 					for (var i in data.res){
 						var info = data.res[i];
-						var item = $('<span></span>').addClass('emouni').text(info.emoji);
+						var item = $('<img></img>').setattr('src', info.url);
 						var score = $('<span></span>').addClass('').text('(' + info.score + ')');
 								
 						emolist.append(item);

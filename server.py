@@ -80,7 +80,7 @@ def predict():
 			res = recommender.recommend(text)
 
 			for ri in res:
-				ri['url'] = emoji_url[ri['emoji']]
+				ri['url'] = emoji_url[ri['emoji'][1:-1]]
 
 			return json.dumps({'status':0, 'res':res})
 		except:
